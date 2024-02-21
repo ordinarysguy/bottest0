@@ -58,8 +58,8 @@ def handle_message(event):
     try:
         msg = event.message.text
         massage=ImageSendMessage(
-                original_content_url = "https://www.google.com/search?q=%E8%B2%93%E5%92%AA&tbm=isch&ved=2ahUKEwiUlPfH4byEAxXFXvUHHR_eCMMQ2-cCegQIABAA&oq=%E8%B2%93%E5%92%AA&gs_lp=EgNpbWciBuiyk-WSqjIFEAAYgAQyCBAAGIAEGLEDMggQABiABBixAzIIEAAYgAQYsQMyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARI4BxQrhNYuBpwAHgAkAEAmAE7oAGfAqoBATe4AQPIAQD4AQGKAgtnd3Mtd2l6LWltZ8ICBBAjGCfCAgcQABiABBgYiAYB&sclient=img&ei=mxjWZdTaKsW91e8Pn7yjmAw&bih=632&biw=1396&prmd=nivsbmtz&rlz=1C1VDKB_zh-TWTW954TW954#imgrc=UJOVbdwXLXE1mM",
-                preview_image_url = "https://www.google.com/search?q=%E8%B2%93%E5%92%AA&tbm=isch&ved=2ahUKEwiUlPfH4byEAxXFXvUHHR_eCMMQ2-cCegQIABAA&oq=%E8%B2%93%E5%92%AA&gs_lp=EgNpbWciBuiyk-WSqjIFEAAYgAQyCBAAGIAEGLEDMggQABiABBixAzIIEAAYgAQYsQMyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARI4BxQrhNYuBpwAHgAkAEAmAE7oAGfAqoBATe4AQPIAQD4AQGKAgtnd3Mtd2l6LWltZ8ICBBAjGCfCAgcQABiABBgYiAYB&sclient=img&ei=mxjWZdTaKsW91e8Pn7yjmAw&bih=632&biw=1396&prmd=nivsbmtz&rlz=1C1VDKB_zh-TWTW954TW954#imgrc=UJOVbdwXLXE1mM")
+                original_content_url = "https://ithelp.ithome.com.tw/upload/images/20220925/20151681EaMkK6ROvq.jpg",
+            preview_image_url = "https://ithelp.ithome.com.tw/upload/images/20220925/20151681EaMkK6ROvq.jpg")
         line_bot_api.reply_message(event.reply_token, message)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     except:
