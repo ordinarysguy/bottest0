@@ -60,7 +60,7 @@ def handle_message(event):
         massage=ImageSendMessage(
                 original_content_url = "https://ithelp.ithome.com.tw/upload/images/20220925/20151681EaMkK6ROvq.jpg",
             preview_image_url = "https://ithelp.ithome.com.tw/upload/images/20220925/20151681EaMkK6ROvq.jpg")
-        line_bot_api.reply_message(event.reply_token, message)
+        line_bot_api.reply_message(event.reply_token, massage)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage("Gg"))
