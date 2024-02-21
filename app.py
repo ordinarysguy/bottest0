@@ -58,8 +58,8 @@ def handle_message(event):
     try:
         msg = event.message.text
         massage=ImageSendMessage(
-                original_content_url = "[img]https://upload.cc/i1/2024/02/22/S4RsOU.png[/img]",
-            preview_image_url = "[img]https://upload.cc/i1/2024/02/22/S4RsOU.png[/img]")
+                original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
+            preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
         line_bot_api.reply_message(event.reply_token, massage)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     except:
