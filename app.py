@@ -56,11 +56,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     massage=ImageSendMessage(
             original_content_url = "https://drive.google.com/file/d/1Kce-JCXdVRLj7fZkhshoIx219Pjydrj1/view?usp=drive_link",
             preview_image_url = "https://drive.google.com/file/d/1Kce-JCXdVRLj7fZkhshoIx219Pjydrj1/view?usp=drive_link")
     line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     '''
     try:
         GPT_answer = GPT_response(msg)
