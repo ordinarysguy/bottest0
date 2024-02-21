@@ -30,6 +30,7 @@ def GPT_response(text):
     # 接收回應
     response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
     print(response)
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(進入chatgpt))
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
