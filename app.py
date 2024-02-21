@@ -58,7 +58,7 @@ def handle_message(event):
     try:
         msg = event.message.text
         massage=ImageSendMessage(
-                original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
+                original_content_url = "https://lh3.googleusercontent.com/pw/ABLVV84uV8h6k1tHJgssMxpM2GSylRNCUwSgj-D7nnF7ov3H6J2y_rV_oBQp1-wKWH15l8v7OwQ5ojW1okaU0jSeagv0A1wM7YzCWg9m1GuN2dHkHCFTQ65ckVHWRHRfLFFO-BsqTxxWjt9OIKELsyx3tu7SQubaUOS1TWCp-Zd6gYQdihHraxqE7k6GgWTKHKcCvNBY93rY5Xy6uvYHw8mLwluuJC5Vf3Ue9jWNdqZXG2Tj3hPdqAO_Qkz9jPBUN-aw12k0QCV9v0sLX6cSEPckdHg916HFGNwsc_3P2cIGt3vmZmnIsx3MMsXOnW9XPgaiADKExnZSBYl9_CnP5NiiexHpTbnClqJ-w1l8rfjXrTv_EVXRRZ3OkQMl2b9GuZ99A9h7Kq7F2KrfPCUqphUyC-8uQyogUQhGqGrzyOpSd9Jv53zhU17zU99l9605PmaOMmUvb-yaPGrfS9EHTooPjLyNtZZuLkdDIUyMZsIMB-1r_JvlG0LLkyw7oVg5C0HZ3mBtI-K1XPUIzo2jUrkbqk1jV5tonkkx7Tnts8wog_UQlMjqpBu11e4ib3LWL3yxV1BqZRAo26Kw99FngAsgaWLdy-bI3pYUftnNUreaqFkFHUQ-T4h0BqoLnRV4Wlg-74LqBtIPzLHTw2kMhdARmem-Q36QmeuKh37X5AdJ33rLQMN9uSxr5DON5rdMavscs3a6H84reFySe1bjz-OvJjOcTEF0VA_-K60lVxdFHV4bGnspMVGD9gSEY8MO8WxUNNl_KMps8KmwumPxqi4aKZ8gco0GcNA939wxKDppPB3DGArFJQQzTTKs0Om91yCZzc9sDAxWeIX8EV5X_WnWdT-Vd5Fc9NBVhHWsDxJWnc5fohl46CVNkncFyl7zw1BZZxJqPzTytfXEC6nII_jib2rl5Q9tHnXGU_u4zGwt5HEiD11R0g6O-qC5BtC0=w401-h869-s-no-gm?authuser=0",
             preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
         line_bot_api.reply_message(event.reply_token, massage)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
