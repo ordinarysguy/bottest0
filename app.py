@@ -58,8 +58,8 @@ def handle_message(event):
     try:
         msg = event.message.text
         massage=ImageSendMessage(
-                original_content_url = "https://fluv.com/blog/wp-content/uploads/sites/2/2023/08/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-9.png",
-            preview_image_url = "https://fluv.com/blog/wp-content/uploads/sites/2/2023/08/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-9.png")
+                original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
+            preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
         line_bot_api.reply_message(event.reply_token, massage)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     except:
