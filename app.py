@@ -56,10 +56,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    if(msg[0]=='1'):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('1'))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('2'))
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+    massage=ImageSendMessage(
+            original_content_url = "https://drive.google.com/file/d/1Kce-JCXdVRLj7fZkhshoIx219Pjydrj1/view?usp=drive_link",
+            preview_image_url = "https://drive.google.com/file/d/1Kce-JCXdVRLj7fZkhshoIx219Pjydrj1/view?usp=drive_link")
+    line_bot_api.reply_message(event.reply_token, message)
+    '''
     try:
         GPT_answer = GPT_response(msg)
         print(GPT_answer)
@@ -67,6 +69,7 @@ def handle_message(event):
     except:
         print(traceback.format_exc())
         line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息2'))
+    '''
         
 
 @handler.add(PostbackEvent)
