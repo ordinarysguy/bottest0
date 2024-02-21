@@ -58,8 +58,8 @@ def handle_message(event):
     try:
         msg = event.message.text
         massage=ImageSendMessage(
-                original_content_url = "https://drive.google.com/file/d/1Kce-JCXdVRLj7fZkhshoIx219Pjydrj1/view?usp=drive_link",
-            preview_image_url = "https://drive.google.com/file/d/1Kce-JCXdVRLj7fZkhshoIx219Pjydrj1/view?usp=drive_link")
+                original_content_url = "https://photos.google.com/photo/AF1QipPU_VYwhrcb8OM70InBNtep6kLRwhC8lWvVWbLr",
+            preview_image_url = "https://photos.google.com/photo/AF1QipPU_VYwhrcb8OM70InBNtep6kLRwhC8lWvVWbLr")
         line_bot_api.reply_message(event.reply_token, massage)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     except:
