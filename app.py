@@ -58,8 +58,8 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text
     try:
+        msg = event.message.text
         json_data=json.loads(msg)
         type=json_data['events'][0]['message']['type']
         if(type=='image'):
