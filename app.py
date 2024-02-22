@@ -60,6 +60,7 @@ def callback():
 def handle_message(event):
     try:
         msg = event.message.text
+        '''
         json_data=json.loads(msg)
         type=json_data['events'][0]['message']['type']
         if(type=='image'):
@@ -69,6 +70,7 @@ def handle_message(event):
             with open(f'{msgID}.jpg', 'wb') as fd:
                 fd.write(message_content.content)             # 以二進位的方式寫入檔案
             line_bot_api.reply_message(event.reply_token, TextSendMessage('圖片儲存完成！')) # 設定要回傳的訊息
+            '''
         
         if(msg=='貓貓'):
             massage=ImageSendMessage(
