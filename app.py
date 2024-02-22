@@ -83,9 +83,6 @@ def handle_message(event):
             preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
         line_bot_api.reply_message(event.reply_token, massage)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
-        else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('gg')) # 設定要回傳的訊息
-
             
     except:
         line_bot_api.reply_message(event.reply_token, TextSendMessage('gg')) # 設定要回傳的訊息
