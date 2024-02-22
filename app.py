@@ -14,6 +14,7 @@ import datetime
 import openai
 import time
 import traceback
+import json
 #======python的函數庫==========
 
 app = Flask(__name__)
@@ -57,23 +58,35 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    '''
+    msg = event.message.text
     try:
-        msg = event.message.text
-        if(msg=='貓貓'):
-            massage=ImageSendMessage(
-            original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
-            preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
-            line_bot_api.reply_message(event.reply_token, massage)
-        else:
-            massage=ImageSendMessage(
-            original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
-            preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
-        line_bot_api.reply_message(event.reply_token, massage)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+        json_data=json.loads(msg)
+        type=json_data['events'][0]['message']['type']
+        if(type=='image'):
+            msgID = json_data['events'][0]['message']['id']
+            message_content = line_bot_api.get_message_content(msgID)  # 根據訊息 ID 取得訊息內容
+            # 在同樣的資料夾中建立以訊息 ID 為檔名的 .jpg 檔案
+            with open(f'{msgID}.jpg', 'wb') as fd:
+                fd.write(message_content.content)             # 以二進位的方式寫入檔案
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('圖片儲存完成！')) # 設定要回傳的訊息
     except:
-        line_bot_api.reply_message(event.reply_token,TextSendMessage("Gg"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage('gg')) # 設定要回傳的訊息
+
     '''
+    if(msg=='貓貓'):
+        massage=ImageSendMessage(
+        original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
+        preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
+        line_bot_api.reply_message(event.reply_token, massage)
+    elif(msg=='笑話'):
+        
+    else:
+        massage=ImageSendMessage(
+        original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
+        preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
+    line_bot_api.reply_message(event.reply_token, massage)
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+    
     try:
         GPT_answer = GPT_response(msg)
         print(GPT_answer)
@@ -81,7 +94,7 @@ def handle_message(event):
     except:
         print(traceback.format_exc())
         line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息3'))
-    
+    '''
         
 
 @handler.add(PostbackEvent)
