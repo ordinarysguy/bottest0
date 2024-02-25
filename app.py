@@ -195,7 +195,7 @@ def handle_message(event):
             d=1
             haa=random.randint(0,len(joke))
             message=joke[haa][0]
-            line_bot_api.reply_message(event.reply_token,message)
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
         '''
         if(msg=='為什麼' and d==1):
             d=0
