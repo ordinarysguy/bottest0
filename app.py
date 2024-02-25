@@ -196,13 +196,13 @@ def handle_message(event):
         if(msg=='謎題'):
             d=1
             lengh=len(joke)
-            haa=random.randint(0,lengh)
-            message=joke[haa][0]
+            haa=random.randint(1,lengh)
+            message=joke[haa-1][0]
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
         
         if(msg=='為什麼' and d==1):
             d=0
-            message=joke[haa][1]
+            message=joke[haa-1][1]
             line_bot_api.reply_message(event.reply_token,message)
         
             
