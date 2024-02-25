@@ -198,12 +198,12 @@ def handle_message(event):
             haa=random.randint(0,lengh)
             message=joke[haa][0]
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
-        '''
+        
         if(msg=='為什麼' and d==1):
             d=0
             message=joke[haa][1]
             line_bot_api.reply_message(event.reply_token,message)
-        '''
+        
             
     except Exception as e:
         error_class = e.__class__.__name__ #取得錯誤類型
