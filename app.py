@@ -193,7 +193,8 @@ def handle_message(event):
 
         if(msg=='謎題'):
             d=1
-            haa=random.randint(0,len(joke))
+            lengh=len(joke)
+            haa=random.randint(0,lengh)
             message=joke[haa][0]
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
         '''
