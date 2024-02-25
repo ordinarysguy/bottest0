@@ -179,18 +179,18 @@ def handle_message(event):
             '''
         
         if(msg=='貓貓'):
-            massage=ImageSendMessage(
+            message=ImageSendMessage(
             original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
             preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
-            line_bot_api.reply_message(event.reply_token, massage)
+            line_bot_api.reply_message(event.reply_token, message)
         #elif(msg=='笑話'):
             
         if(msg=='余爾佑出來'):
-            massage=ImageSendMessage(
+            message=ImageSendMessage(
             original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
             preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
-        line_bot_api.reply_message(event.reply_token, massage)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+            line_bot_api.reply_message(event.reply_token, message)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
 
         if(msg=='謎題'):
             d=1
