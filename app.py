@@ -162,7 +162,7 @@ def handle_message(event):
     try:
         msg = event.message.text
         id = line_bot_api.get_profile('<user_id>')
-        line_bot_api.push_message(id,TextSendMessage('部屬完成') )
+        line_bot_api.reply_message(event.reply_token,TextSendMessage('部屬完成') )
         '''
         json_data=json.loads(msg)
         type=json_data['events'][0]['message']['type']
