@@ -162,7 +162,7 @@ def handle_message(event):
     try:
         msg = event.message.text
         id = event.source.user_id
-        lline_bot_api.push_message(id,TextSendMessage('可以打字了') )
+        line_bot_api.push_message(id,TextSendMessage('可以打字了') )
         '''
         json_data=json.loads(msg)
         type=json_data['events'][0]['message']['type']
