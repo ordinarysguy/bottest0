@@ -104,13 +104,12 @@ joke=[
 ['地震是公的還是母的？','公的，因為地震有幾級']
 ]
 
-banded=[
+hell=[
 ['唐寶寶天天刷牙會變什麼？','口香糖'],
 ['原住名腳斷掉猜一種蔬菜？','番茄（番瘸）'],
 ['把菲傭關起來猜一個國家？','索馬利亞'],
 ['你知道為什麼男生勃起不能往上嗎？','因為他們無法反駁'],
 ['獵人打完手槍，會變什麼？','以色列人'],
-
 ]
 
 
@@ -190,6 +189,15 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
             time.sleep(5)
             message=joke[haa-1][1]
+            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+
+        if(msg=='地域笑話'):
+            lengh=len(hell)
+            hel=random.randint(1,lengh)
+            message=hell[hel-1][0]
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
+            time.sleep(5)
+            message=hell[hel-1][1]
             line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
 
         if(msg=='笑話'):
