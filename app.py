@@ -216,6 +216,7 @@ def handle_message(event):
                 for i in range(laulen):
                     message=laugh[lau-1][i]
                     line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+                    time.sleep(5)
 
         
             
