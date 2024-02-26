@@ -161,7 +161,7 @@ def callback():
 def handle_message(event):
     try:
         msg = event.message.text
-        id = event.events.source.userId
+        id = event.source.user_id
         line_bot_api.reply_message(event.reply_token,TextSendMessage(id) )
         '''
         json_data=json.loads(msg)
