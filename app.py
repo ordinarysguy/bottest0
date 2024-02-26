@@ -187,16 +187,16 @@ def handle_message(event):
             haa=random.randint(1,lengh)
             message=joke[haa-1][0]
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
-            time.sleep(5)
+            time.sleep(7.5)
             message=joke[haa-1][1]
             line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
 
-        if(msg=='地域笑話'):
+        if(msg=='地獄笑話'):
             lengh=len(hell)
             hel=random.randint(1,lengh)
             message=hell[hel-1][0]
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
-            time.sleep(5)
+            time.sleep(7.5)
             message=hell[hel-1][1]
             line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
 
