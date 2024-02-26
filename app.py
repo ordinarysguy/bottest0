@@ -210,7 +210,7 @@ def handle_message(event):
             lau=random.randint(1,lengh)
             laulen=len(laugh[lau-1])
             if(laulen==1):
-                message=laugh[lau-1]
+                message=laugh[lau-1][0]
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
             else:
                 for i in range(laulen):
