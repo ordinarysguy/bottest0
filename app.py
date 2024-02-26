@@ -127,7 +127,7 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
+#line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
 
 
 def GPT_response(text):
@@ -161,6 +161,8 @@ def callback():
 def handle_message(event):
     try:
         msg = event.message.text
+        id = event..source.userId
+        line_bot_api.push_message(id,TextSendMessage('部屬完成') )
         '''
         json_data=json.loads(msg)
         type=json_data['events'][0]['message']['type']
@@ -178,14 +180,12 @@ def handle_message(event):
             original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
             preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
             line_bot_api.reply_message(event.reply_token, message)
-        #elif(msg=='笑話'):
             
         if(msg=='余爾佑出來'):
             message=ImageSendMessage(
             original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
             preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
             line_bot_api.reply_message(event.reply_token, message)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
 
         if(msg=='冷笑話'):
             lengh=len(joke)
@@ -194,7 +194,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
             time.sleep(7.5)
             message=joke[haa-1][1]
-            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+            line_bot_api.push_message(id,TextSendMessage(message))
 
         if(msg=='地獄笑話'):
             lengh=len(hell)
@@ -203,7 +203,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
             time.sleep(7.5)
             message=hell[hel-1][1]
-            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+            line_bot_api.push_message(id,TextSendMessage(message))
 
         if(msg=='笑話'):
             lengh=len(laugh)
@@ -215,7 +215,7 @@ def handle_message(event):
             else:
                 for i in range(laulen):
                     message=laugh[lau-1][i]
-                    line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+                    line_bot_api.push_message(id,TextSendMessage(message))
                     time.sleep(5)
 
         
