@@ -199,11 +199,10 @@ def handle_message(event):
             haa=random.randint(1,lengh)
             message=joke[haa-1][0]
             line_bot_api.reply_message(event.reply_token,TextSendMessage(message))
-        
-        if(msg=='為什麼' and d==1):
-            d=0
+            time.sleep(5)
             message=joke[haa-1][1]
-            line_bot_api.reply_message(event.reply_token,message)
+            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+
         
             
     except Exception as e:
