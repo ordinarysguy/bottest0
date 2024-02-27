@@ -185,6 +185,12 @@ def handle_message(event):
             original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
             preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
             line_bot_api.reply_message(event.reply_token, message)
+        if(msg=='許書絃'):
+            message=ImageSendMessage(
+            original_content_url = "https://i.ibb.co/Jkkw0yp/IMG-4604.jpg",
+            preview_image_url = "https://i.ibb.co/Jkkw0yp/IMG-4604.jpg")
+            line_bot_api.reply_message(event.reply_token, message)
+            
 
         if(msg=='冷笑話'):
             lengh=len(joke)
