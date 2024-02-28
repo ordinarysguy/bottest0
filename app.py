@@ -162,25 +162,16 @@ def handle_message(event):
     try:
         msg = event.message.text
         id = event.source.user_id
-        '''
-        json_data=json.loads(msg)
-        type=json_data['events'][0]['message']['type']
-        if(type=='image'):
-            msgID = json_data['events'][0]['message']['id']
-            message_content = line_bot_api.get_message_content(msgID)  # 根據訊息 ID 取得訊息內容
-            # 在同樣的資料夾中建立以訊息 ID 為檔名的 .jpg 檔案
-            with open(f'{msgID}.jpg', 'wb') as fd:
-                fd.write(message_content.content)             # 以二進位的方式寫入檔案
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('圖片儲存完成！')) # 設定要回傳的訊息
-            '''
-        
+
+        if(msg=='有什麼功能'):
+            line_bot_api.reply_message(event.reply_token, TextSendMessage('輸入 笑話 聽一則笑話\n輸入 冷笑話 獲取一個冷笑話\n輸入 加笑話(你要加入的笑話) 讓我加入你的笑話\n目前功能沒有很多\n如果有想要加入什麼功能，輸入：!(你想說的話)，來通知作者'))
         if(msg=='貓貓'):
             message=ImageSendMessage(
             original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
             preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
             line_bot_api.reply_message(event.reply_token, message)
             
-        if(msg=='余爾佑出來'):
+        if(msg=='余爾佑'):
             message=ImageSendMessage(
             original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
             preview_image_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png")
