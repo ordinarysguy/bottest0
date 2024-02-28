@@ -165,12 +165,18 @@ def handle_message(event):
 
         if(msg=='有什麼功能'):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('輸入 笑話 聽一則笑話\n輸入 冷笑話 獲取一個冷笑話\n輸入 加笑話(你要加入的笑話) 讓我加入你的笑話\n目前功能沒有很多\n如果有想要加入什麼功能，輸入：!(你想說的話)，來通知作者'))
+        
         if(msg=='貓貓'):
             message=ImageSendMessage(
             original_content_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*",
             preview_image_url = "https://hips.hearstapps.com/hmg-prod/images/domestic-gray-tabby-cat-with-an-orange-nose-is-royalty-free-image-1686039395.jpg?crop=0.668xw:1.00xh;0.264xw,0&resize=980:*")
             line_bot_api.reply_message(event.reply_token, message)
-            
+        if(msg[0]=='!'):
+            message=msg[1:]
+            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
+        if(msg[0:2]=='加笑話'):
+            message=msg[3:]
+            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage(message))
         if(msg=='余爾佑'):
             message=ImageSendMessage(
             original_content_url = "https://upload.cc/i1/2024/02/22/S4RsOU.png",
