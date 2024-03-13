@@ -125,7 +125,7 @@ line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = ('OPENAI_API_KEY')
 
 line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
 
@@ -163,6 +163,17 @@ def handle_message(event):
         msg = event.message.text
         id = event.source.user_id
 
+        if(msg[0:1]=='AI'):
+            msg=msg[2:]
+            response = openai.Completion.create(
+            model='text-davinci-003',
+            prompt=msg[6:],
+            max_tokens=256,
+            temperature=0.5,
+            )
+            line_bot_api.reply_message(event.reply_token,response)
+
+        
         if(msg=='有什麼功能'):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('輸入 笑話 聽一則笑話\n輸入 冷笑話 獲取一個冷笑話\n輸入 加笑話(你要加入的笑話) 讓我加入你的笑話\n目前功能沒有很多\n如果有想要加入什麼功能，輸入：!(你想說的話)，來通知作者'))
         
@@ -219,8 +230,7 @@ def handle_message(event):
                     message=laugh[lau-1][i]
                     line_bot_api.push_message(id,TextSendMessage(message))
                     time.sleep(5)
-
-        
+       
             
     except Exception as e:
         error_class = e.__class__.__name__ #取得錯誤類型
