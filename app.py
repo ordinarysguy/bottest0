@@ -159,8 +159,8 @@ def chat_with_gpt(user_input):
         # 從回覆中提取機器人的回覆訊息，並去除前後空白
         result = response['choices'][0]['message']['content'].strip()
         return result # 返回處理過的回覆給LINE使用者
-    except openai.Error as e:
-        return "Error: OpenAI API"
+   # except openai.Error as e:
+    #    return "Error: OpenAI API"
     except Exception as e:
         return "Error: An unexpected error occurred"
 
