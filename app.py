@@ -126,7 +126,7 @@ static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-OpenAI().api_key = os.getenv('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')
+openai.api_key = os.getenv('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')
 CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
 CHATGPT_API_KEY = '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'
 
