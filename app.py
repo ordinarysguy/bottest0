@@ -165,13 +165,14 @@ def handle_message(event):
 
         if(msg[0:1]=='AI'):
             msg=msg[2:]
-            response = openai.Completion.create(
+            res = openai.Completion.create(
             model='text-davinci-003',
             prompt=msg[6:],
             max_tokens=256,
             temperature=0.5,
             )
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(response))
+            resp = res["choices"][0]["text"].replace('\n','')
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(resp))
 
         
         if(msg=='有什麼功能'):
