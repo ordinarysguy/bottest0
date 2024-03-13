@@ -187,8 +187,8 @@ def handle_message(event):
         msg = event.message.text
         id = event.source.user_id
 
-        if(msg[0][0:1]=='AI'):
-            res=chat_with_gpt(msg[0][3:])
+        if(msg[0:2]=='AI'):
+            res=chat_with_gpt(msg[3:])
             line_bot_api.reply_message(event.reply_token, TextSendMessage(res))
             line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('in'))
 
