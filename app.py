@@ -8,7 +8,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-from openai import OpenAI
+import openai
 
 #======python的函數庫==========
 import tempfile, os
