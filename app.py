@@ -124,6 +124,10 @@ static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
+
+CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
+CHATGPT_API_KEY = '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'
+
 # OPENAI API Key初始化設定
 #openai.api_key = 'OPENAI_API_KEY'
 
@@ -134,7 +138,6 @@ def GPT_response(text):
     # 接收回應
     response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
     print(response)
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(進入chatgpt))
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
@@ -164,10 +167,7 @@ def handle_message(event):
         id = event.source.user_id
 
         if(msg[0:1]=='AI'):
-            headers = {'Authorization': 'Bearer ' + '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'}
-            data = {'text': user_message}
-            response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
-            res=response.json()['reply']
+            res=GPT_response(msg[3:])
             line_bot_api.reply_message(event.reply_token,TextSendMessage(res))
 
         
