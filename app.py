@@ -171,7 +171,7 @@ def handle_message(event):
             max_tokens=256,
             temperature=0.5,
             )
-            line_bot_api.reply_message(event.reply_token,response)
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(response))
 
         
         if(msg=='有什麼功能'):
