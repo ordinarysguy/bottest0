@@ -125,7 +125,7 @@ line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
-openai.api_key = 'OPENAI_API_KEY'
+#openai.api_key = 'OPENAI_API_KEY'
 
 line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
 
@@ -164,9 +164,9 @@ def handle_message(event):
         id = event.source.user_id
 
         if(msg[0:1]=='AI'):
-            headers = {'Authorization': 'Bearer ' + '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'}
+            headers = {'Authorization': 'Bearer ' + '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'}
             data = {'text': user_message}
-            response = requests.post(CHATGPT_API_URL, headers=headers, json=data)
+            response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
             res=response.json()['reply']
             line_bot_api.reply_message(event.reply_token,TextSendMessage(res))
 
