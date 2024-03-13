@@ -8,6 +8,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from openai import OpenAI
+
 #======python的函數庫==========
 import tempfile, os
 import datetime
@@ -124,7 +126,7 @@ static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-openai.api_key = os.getenv('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')
+OpenAI().api_key = os.getenv('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')
 CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
 CHATGPT_API_KEY = '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'
 
@@ -136,7 +138,7 @@ line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('�
 
 def GPT_response(text):
     # 接收回應
-    response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
+    response = OpenAI().Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
