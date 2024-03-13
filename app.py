@@ -124,7 +124,7 @@ static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-
+openai.api_key = os.getenv('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')
 CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
 CHATGPT_API_KEY = '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'
 
@@ -168,7 +168,9 @@ def handle_message(event):
 
         if(msg[0:1]=='AI'):
             res=GPT_response(msg[3:])
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(res))
+            GPT_answer = GPT_response(res)
+            print(GPT_answer)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
 
         
         if(msg=='有什麼功能'):
