@@ -143,7 +143,26 @@ def GPT_response(text):
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
-
+    
+def chat_with_gpt(user_input):
+    try:
+        # 設定提示語句，將使用者輸入的訊息與回覆模板結合
+        prompt = f"{user_input}\n\nResponse:"
+        # 使用OpenAI API，傳遞模型名稱、訊息角色和內容，以生成機器人回覆
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": prompt}
+                ]
+        )
+        # 從回覆中提取機器人的回覆訊息，並去除前後空白
+        result = response['choices'][0]['message']['content'].strip()
+        return result # 返回處理過的回覆給LINE使用者
+    except openai.Error as e:
+        return "Error: OpenAI API"
+    except Exception as e:
+        return "Error: An unexpected error occurred"
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -169,10 +188,8 @@ def handle_message(event):
         id = event.source.user_id
 
         if(msg[0:1]=='AI'):
-            res=GPT_response(msg[3:])
-            GPT_answer = GPT_response(res)
-            print(GPT_answer)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
+            res=chat_with_gpt(msg[3:])
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(res))
             line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('in'))
 
 
