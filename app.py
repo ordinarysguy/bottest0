@@ -171,6 +171,8 @@ def handle_message(event):
             GPT_answer = GPT_response(res)
             print(GPT_answer)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
+            line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('in'))
+
 
         
         if(msg=='有什麼功能'):
