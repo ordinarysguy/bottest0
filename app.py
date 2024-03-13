@@ -250,6 +250,9 @@ def handle_message(event):
                     message=laugh[lau-1][i]
                     line_bot_api.push_message(id,TextSendMessage(message))
                     time.sleep(5)
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(msg))
+
        
             
     except Exception as e:
