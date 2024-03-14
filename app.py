@@ -130,7 +130,7 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
 CHATGPT_API_KEY = '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'
 
-client = OpenAI(api_key=os.environ['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'])
+client = OpenAI(api_key=os.environ['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'])
 
 line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
 
