@@ -126,12 +126,14 @@ static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-openai.api_key = os.getenv('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')
+#openai.api_key = os.getenv('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')
 CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
 CHATGPT_API_KEY = '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'
 
 # OPENAI API Key初始化設定
-#openai.api_key = 'OPENAI_API_KEY'
+from openai import OpenAI
+
+client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 
 line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
 
@@ -141,7 +143,7 @@ def GPT_response(text):
     response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
-    answer = response['choices'][0]['text'].replace('。','')
+    answer = response.choices[0].text
     return answer
     
 def chat_with_gpt(user_input):
