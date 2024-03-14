@@ -138,7 +138,7 @@ line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('�
 
 def GPT_response(text):
     # 接收回應
-    response = OpenAI().Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
+    response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
@@ -188,7 +188,7 @@ def handle_message(event):
         id = event.source.user_id
 
         if(msg[0:2]=='AI'):
-            res=chat_with_gpt(msg[3:])
+            res=GPT_response(msg[3:])
             line_bot_api.reply_message(event.reply_token, TextSendMessage(res))
             line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('in'))
 
