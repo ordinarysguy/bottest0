@@ -8,7 +8,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-import openai
+from openai import OpenAI
 
 #======python的函數庫==========
 import tempfile, os
@@ -130,20 +130,17 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 CHATGPT_API_URL = 'https://api.openai.com/v1/chat/completions'
 CHATGPT_API_KEY = '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'
 
-# OPENAI API Key初始化設定
-from openai import OpenAI
-
-client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
+client = OpenAI(api_key=os.environ['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'])
 
 line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('部屬完成') )
 
 
 def GPT_response(text):
-    # 接收回應
-    response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
-    print(response)
+    client = OpenAI()
+    completion = client.completions.create(model=text)
     # 重組回應
-    answer = response.choices[0].text
+    answer=completion.choices[0].text
+    print(answer)
     return answer
     
 def chat_with_gpt(user_input):
