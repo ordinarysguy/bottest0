@@ -136,7 +136,7 @@ line_bot_api.push_message('U14064b6b005dcd289f44ef6a2c106a36',TextSendMessage('�
 
 
 def GPT_response(text):
-    client = OpenAI()
+    #client = OpenAI()
     completion = client.completions.create(model=text)
     # 重組回應
     answer=completion.choices[0].text
